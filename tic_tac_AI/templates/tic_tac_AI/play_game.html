@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Tic tac toe VS AI</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script type="text/javascript" src="{% static 'js/jquery-3.1.0.min.js' %}"> </script>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"> </script>
+    </head>
+    <!-- Everythin except the body is the same as in post_list.html-->
+    <body>
+        <div id="move_AI" style="border: 1px solid black; width: 3em">AI moves first</div>
+        <table>
+            <tr>
+                <td class ="tile" id="0"> </td>
+                <td class ="tile" id="1"> </td>
+                <td class ="tile" id="2"> </td>
+            </tr>
+            <tr>
+                <td class ="tile" id="3"> </td>
+                <td class ="tile" id="4"> </td>
+                <td class ="tile" id="5"> </td>
+            </tr>
+            <tr>
+                <td class ="tile" id="6"> </td>
+                <td class ="tile" id="7"> </td>
+                <td class ="tile" id="8"> </td>
+            </td>
+        </table>
+
+        <div id="scraper" style="border: 1px solid black; width: 3em">Scrape board</div>
+        <div id="placeholder" style="width: 8em">Current board shown here</div>
+        <div id="clearer" style="border: 1px solid black; width: 3em">Clear board</div>
+        <div id="winmarker" style="border: 1px solid black; width: 3em">Mark win sequence</div>
+        <div id="sender" style="border: 1px solid black; width: 3em">Send via Ajax</div>
+
+    </body>
+</html>

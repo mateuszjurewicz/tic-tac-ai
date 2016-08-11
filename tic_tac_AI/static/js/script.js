@@ -94,6 +94,8 @@ $(document).ready(function() {
 	  	$('.tile').each(function(index, element) {
 	  		$(element).css({ 'color': 'black', 'font-weight': 'normal', 'background-color': 'white' });
 	  	});
+	  	// switch human token to be X again, in case the game ended after AI made the first move (we want the first move to always be an X)
+	  	HUMAN_TOKEN = "X";
 	});
 
 	// Basic ajax function (test version)

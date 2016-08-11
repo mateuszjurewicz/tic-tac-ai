@@ -80,6 +80,8 @@ $(document).ready(function() {
 	};
 
 	// Fill the board with tile values based on passed board state
+	// DEBUG - might wanna put this in an if condition that only allows clearing when MOVE_MADE == false, cause I can click AI move, then clear, and then make human move
+	// and only after a couple moves the AI returned board will be shown (cause it takes 5 seconds to process the AI moves first request)
 	$('#clearer').click(function(event) {
 	  	fill_board([' ',' ',' ',' ',' ',' ',' ',' ',' ']);
 	  	// restart depth to 0
@@ -94,8 +96,9 @@ $(document).ready(function() {
 	  	$('.tile').each(function(index, element) {
 	  		$(element).css({ 'color': 'black', 'font-weight': 'normal', 'background-color': 'white' });
 	  	});
-	  	// switch human token to be X again, in case the game ended after AI made the first move (we want the first move to always be an X)
-	  	HUMAN_TOKEN = "X";
+	  	// reset tokens, in case AI started previous game (we want X to always be the starting token)
+	  	AI_TOKEN = "O";
+		HUMAN_TOKEN = "X";
 	});
 
 	// Basic ajax function (test version)

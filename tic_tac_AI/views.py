@@ -3,16 +3,14 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 # we were getting 403 when requesting this view so we're trying to make it csrf exempt
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 
 def play_game(request):
     """ a view-function initiating the main page """
     return render(request, 'tic_tac_AI/play_game.html', {})
 
-# we're opening our site to attacks by making this view csrf exempt,
-# but it resulted in no 403 error, (200 request ok)
-# @csrf_exempt
-@csrf_protect
+# I've added a csrf-token adding code to script.js, works in localhost
+# on PythonAnywhere I need to add the decorator @csrf_exempt to this function
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # we were getting 403 when requesting this view so we're trying to make it csrf exempt
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 def play_game(request):
     """ a view-function initiating the main page """
@@ -11,6 +12,7 @@ def play_game(request):
 
 # I've added a csrf-token adding code to script.js, works in localhost
 # on PythonAnywhere I need to add the decorator @csrf_exempt to this function
+@ensure_csrf_cookie
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':

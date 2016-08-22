@@ -11,7 +11,7 @@ def play_game(request):
 
 # we're opening our site to attacks by making this view csrf exempt,
 # but it resulted in no 403 error, (200 request ok)
-@csrf_exempt
+# @csrf_exempt
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':

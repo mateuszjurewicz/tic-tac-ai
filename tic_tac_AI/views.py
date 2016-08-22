@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 # we were getting 403 when requesting this view so we're trying to make it csrf exempt
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 def play_game(request):
     """ a view-function initiating the main page """
@@ -12,6 +12,7 @@ def play_game(request):
 # we're opening our site to attacks by making this view csrf exempt,
 # but it resulted in no 403 error, (200 request ok)
 # @csrf_exempt
+@csrf_protect
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':

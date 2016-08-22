@@ -6,13 +6,15 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 
+# on PythonAnywhere (not on localhost) our csrf-token was null
+# so we had to force our main view to set the cookie via this decorator
+@ensure_csrf_cookie
 def play_game(request):
     """ a view-function initiating the main page """
     return render(request, 'tic_tac_AI/play_game.html', {})
 
 # I've added a csrf-token adding code to script.js, works in localhost
 # on PythonAnywhere I need to add the decorator @csrf_exempt to this function
-@ensure_csrf_cookie
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':

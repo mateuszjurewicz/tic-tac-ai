@@ -30,6 +30,7 @@ $(document).ready(function() {
         }
         return cookieValue;
     }
+    var csrftoken = getCookie('csrftoken');
 
     function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
@@ -130,8 +131,6 @@ $(document).ready(function() {
 
     // Basic ajax function (test version)
     function sendData() {
-    	// create a CSRF cookie
-		var csrftoken = getCookie('csrftoken');
         board_now = grab_board();
         $.ajax({
             url: "AI_moves/",

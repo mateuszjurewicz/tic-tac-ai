@@ -10,10 +10,24 @@ $(document).ready(function() {
     HUMAN_TOKEN = "X";
     GAME_OVER = false;
     GAME_ALREADY_STARTED = false;
-    // a global variable making it impossible for the human to make more than one move by clicking quickly
+
+    // A global variable making it impossible for the human to make more than one move by clicking quickly
     MOVE_MADE = false;
 
-    // use a function from django documentation to create a cookie for csrf safety
+    // Have a 2-dimensional array for ways to win, needed for the function showVictory() that marks the winning sequence in blue
+    WAYS_TO_WIN = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+
+
+    // Use a function from django documentation to create a cookie for csrf safety
     // https://docs.djangoproject.com/en/dev/ref/csrf/#django.views.decorators.csrf.csrf_exempt
     function getCookie(name) {
         var cookieValue = null;
@@ -30,8 +44,11 @@ $(document).ready(function() {
         }
         return cookieValue;
     }
+
+    // Create a csrf cookie and store it in a variable
     var csrftoken = getCookie('csrftoken');
 
+    // Define a function for methods that don't require a csrf token
     function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -169,28 +186,6 @@ $(document).ready(function() {
         });
     };
 
-    // Click the sender button and trigger the ajax function
-    $('#sender').click(function(event) {
-        sendData();
-    });
-
-    // Click the "mark win sequnce" button to trigger the showVictory()
-    $('#winmarker').click(function(event) {
-        showVictory();
-    });
-
-    // Have a 2-dimensional array for ways to win, needed for the function showVictory() that marks the winning sequence in blue
-    WAYS_TO_WIN = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ]
-
     // Make a function that marks the winning sequence in a color
     function showVictory(won_board) {
         board_now = won_board;
@@ -218,8 +213,6 @@ $(document).ready(function() {
                 };
             };
         };
-        // this was a working debug as of 2016 07 30
-        // alert(tiles_that_won);
     };
 
 });

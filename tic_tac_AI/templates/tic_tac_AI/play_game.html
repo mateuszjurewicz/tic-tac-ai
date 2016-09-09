@@ -23,15 +23,17 @@
             <h1 align="center">tic tac toe</h1>
             <h1 align="center">AI</h1>
 
+            <p align="center" style="width: 298px; margin: auto; margin-bottom: 1em; text-align: center;">Face an <span style="font: bold; color: gray;">algorithmically intelligent</span> opponent by clicking your chosen tile or asking the (other) machine to go first</p>
+
             <div style="display: table; margin: auto;">
-                <div id="move_AI" style="display: inline-block;">
+                <div id="move_AI" style="display: inline-block; margin-bottom: 1em; margin-right: 2px;">
                 <!-- 95x95 pixels for the button currently works -->
                     <img src="{% static "computer.png" %}" alt="My image"/>
                 </div>
-                <div id="clearer" style="display: inline-block;">
+                <div id="clearer" style="display: inline-block; margin-bottom: 1em;">
                     <img src="{% static "restart.png" %}" alt="My image"/>
                 </div>
-                <div id="move_AI" style="display: inline-block;">
+                <div id="move_AI" style="display: inline-block; margin-bottom: 1em; margin-left: 2px;">
                     <img src="{% static "human.png" %}" alt="My image"/>
                 </div>
             </div>
@@ -62,6 +64,14 @@
                 </div>
             </div>
 
+            <div style="display: table; margin: auto; margin-top: 0em">
+                <div style="display: inline-block; width: 190px; margin-top: 0em">
+                    <p align="center" style="text-align: left; margin-top: 1em;">Click to see how the <span style="font: bold; color: gray;">AI perceived</span> the board and made its decisions</p>
+                </div>
+                <div id="move_AI" style="display: inline-block;">
+                    <img src="{% static "human.png" %}" alt="My image"/>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -5,7 +5,7 @@ $(document).ready(function() {
     EMPTY = " ";
 
     // Create global variables keeping track of nr of turns taken (depth/10) and AI's starting token (X or O)
-    DEPTH_NOW = 10;
+    DEPTH_NOW = 0;
     AI_TOKEN = "O";
     HUMAN_TOKEN = "X";
     GAME_OVER = false;
@@ -136,9 +136,16 @@ $(document).ready(function() {
         // loop over each tile and append switch the formatting back to default (in case someone won)
         $('.tile').each(function(index, element) {
             $(element).css({
-                'color': 'black',
-                'font-weight': 'normal',
-                'background-color': 'white'
+                'background-color': '#eeebeb',
+    			'border': 'solid white 4px',
+    			'width' : '3em',
+    			'height' : '3em',
+    			'text-align' : 'center',
+    			'font-size' : '200%',
+    			'border-radius' : '16px',
+    			'-moz-border-radius' : '6px',
+    			'color' : 'black',
+    			'font-weight': 'normal'
             });
         });
         // reset tokens, in case AI started previous game (we want X to always be the starting token)

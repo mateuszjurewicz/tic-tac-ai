@@ -10,7 +10,7 @@ td {
     text-align: center;
     font-size: 200%;
     border-radius: 16px;
-    -moz-border-radius:6px;
-    -webkit-border-radius: 6px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
     color: black;
 }

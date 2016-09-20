@@ -20,21 +20,20 @@
 
         <div class="container">
 
-            <h1 align="center">tic tac toe</h1>
-            <h1 align="center">AI</h1>
+            <h2 align="center">tic tac <span style="color: gray;">ai</span></h2>
 
             <p align="center" style="width: 298px; margin: auto; margin-bottom: 1em; text-align: center;">Face an <span style="font: bold; color: gray;">algorithmically intelligent</span> opponent by clicking your chosen tile or asking the (other) machine to go first</p>
 
             <div style="display: table; margin: auto;">
                 <div id="move_AI" style="display: inline-block; margin-bottom: 1em; margin-right: 2px;">
                 <!-- 95x95 pixels for the button currently works -->
-                    <img src="{% static "computer.png" %}" alt="My image"/>
+                    <img src="{% static "ai_starts_active.png" %}" id="ai_starts" alt="A.I. starts"/>
                 </div>
                 <div id="clearer" style="display: inline-block; margin-bottom: 1em;">
                     <img src="{% static "restart.png" %}" alt="My image"/>
                 </div>
-                <div id="move_AI" style="display: inline-block; margin-bottom: 1em; margin-left: 2px;">
-                    <img src="{% static "human.png" %}" alt="My image"/>
+                <div id="thoughts_div" style="display: inline-block; margin-bottom: 1em; margin-left: 2px;">
+                    <img src="{% static "ai_thoughts_inactive.png" %}" id="ai_thoughts" alt="what A.I. thought"/>
                 </div>
             </div>
 
@@ -44,19 +43,19 @@
                         <div class="col-sm-6 col-sm-offset-3 text-center">
                              <table style="margin: auto;">
                                 <tr>
-                                    <td class ="tile" id="0"> </td>
-                                    <td class ="tile" id="1"> </td>
-                                    <td class ="tile" id="2"> </td>
+                                    <td class="tile" id="0"> </td>
+                                    <td class="tile" id="1"> </td>
+                                    <td class="tile" id="2"> </td>
                                 </tr>
                                 <tr>
-                                    <td class ="tile" id="3"> </td>
-                                    <td class ="tile" id="4"> </td>
-                                    <td class ="tile" id="5"> </td>
+                                    <td class="tile" id="3"> </td>
+                                    <td class="tile" id="4"> </td>
+                                    <td class="tile" id="5"> </td>
                                 </tr>
                                 <tr>
-                                    <td class ="tile" id="6"> </td>
-                                    <td class ="tile" id="7"> </td>
-                                    <td class ="tile" id="8"> </td>
+                                    <td class="tile" id="6"> </td>
+                                    <td class="tile" id="7"> </td>
+                                    <td class="tile" id="8"> </td>
                                 </td>
                             </table>
                         </div>
@@ -69,7 +68,7 @@
                     <p align="center" style="text-align: left; margin-top: 1em;">Click to see how the <span style="font: bold; color: gray;">AI perceived</span> the board and made its decisions</p>
                 </div>
                 <div id="move_AI" style="display: inline-block;">
-                    <img src="{% static "human.png" %}" alt="My image"/>
+                    <img src="{% static "ai_thoughts_active.png" %}" alt="My image"/>
                 </div>
             </div>
         </div>

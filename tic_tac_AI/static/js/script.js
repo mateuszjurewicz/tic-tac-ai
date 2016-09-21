@@ -256,7 +256,7 @@ $(document).ready(function() {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 }
                 // buffering animation while AI is thinking
-                $('#4').html("<img src='/static/buffering.gif' />");
+                $('#4').html("<img src='/static/buffering2.gif' />");
             },
             success: function(response) {
                 // let's log the response into the console too (this works)

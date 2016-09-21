@@ -70,7 +70,7 @@ $(document).ready(function() {
             GAME_ALREADY_STARTED = true;
             // switch button to inactive (via css properties)
             $('#ai_move_button').css({
-                'background': 'gray',
+                'background': '#b4b4b4',
                 'cursor': 'auto'
             });
             // switch button to inactive (via property) - to work with jquery mouseenter
@@ -93,7 +93,7 @@ $(document).ready(function() {
             $(this).text(HUMAN_TOKEN);
             // format the possibly chosen tile to distinguish it from actually chosen ones
             $(this).css({
-                'color': 'gray',
+                'color': '#b4b4b4',
             });
 
             // Handle the human clicking a tile
@@ -109,7 +109,7 @@ $(document).ready(function() {
                     // if this is human's first move, switch ai starts button to inactive
                     // switch button to inactive (via css properties)
 		            $('#ai_move_button').css({
-		                'background': 'gray',
+		                'background': '#b4b4b4',
 		                'cursor': 'auto'
 		            });
 		            // switch button to inactive (via property) - to work with jquery mouseenter
@@ -190,14 +190,14 @@ $(document).ready(function() {
             MOVE_MADE = false;
             // switch ai_move_button to active via css properties
             $('#ai_move_button').css({
-                'background-color': 'purple',
+                'background-color': '#FFCD4C',
                 'cursor': 'pointer'
             });
            	// switch ai_move_button to active (via property) - to work with jquery mouseenter
             $('#ai_move_button').attr('active', 'yes');
            	// switch ai_thought_button to inactive via css properties
             $('#ai_thought_button').css({
-                'background-color': 'gray',
+                'background-color': '#b4b4b4',
                 'cursor': 'auto'
             });
             // switch ai_thought_button to inactive (via property) - to work with jquery mouseenter
@@ -286,7 +286,7 @@ $(document).ready(function() {
 		            $('#ai_thought_button').attr('active', 'yes');
 		           	// switch ai_thought_button to active via css properties
 		            $('#ai_thought_button').css({
-		                'background-color': 'purple',
+		                'background-color': '#FFCD4C',
 		                'cursor': 'pointer'
 		            });
                 };
@@ -389,7 +389,7 @@ $(document).ready(function() {
             $('#ai_thought_button').attr('active', 'no');
            	// switch ai_thought_button to active via css properties
             $('#ai_thought_button').css({
-                'background-color': 'gray',
+                'background-color': '#b4b4b4',
                 'cursor': 'auto'
             });
             // scroll to the explanatory paragraph and the ai-perceived boards
@@ -412,7 +412,7 @@ $(document).ready(function() {
 	    mouseleave: function () {
 	        if ($(this).attr('active') == 'yes') {
 	        	$(this).css({
-	                'background-color': 'purple',
+	                'background-color': '#FFCD4C',
 	                'cursor': 'pointer'
 	            });
 	        };
@@ -432,7 +432,7 @@ $(document).ready(function() {
 	    mouseleave: function () {
 	        if ($(this).attr('active') == 'yes') {
 	        	$(this).css({
-	                'background-color': 'purple',
+	                'background-color': '#FFCD4C',
 	                'cursor': 'pointer'
 	            });
 	        };

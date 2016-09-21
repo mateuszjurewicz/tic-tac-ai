@@ -54,7 +54,10 @@ def AI_moves(request):
             # taking number of turns already taken (aka depth) into consideration
             # end condition of the recursion
             if game.is_over():
-                return game.minimax_score(player)
+                # we need to pass an empty string here because minimax is expected
+                # to return the Ai-considered board state
+                empty_string = ""
+                return game.minimax_score(player), empty_string
 
             # create lists holding possible moves and their scores
             scores = []
@@ -86,7 +89,10 @@ def AI_moves(request):
                     print("\nError while switching potential game's active player\n")
                 # recursion
                 # add the minimax value of that game to the scores list
-                scores.append(minimax(player, potential_game))
+                # and grab the easy to read string representation
+                # of the board that will be returned by minimax
+                score_to_append, readable_board = minimax(player, potential_game)
+                scores.append(score_to_append)
                 # add the currently considered move to the moves list,
                 # at the same index as the corresponding score
                 moves.append(move)
@@ -105,8 +111,13 @@ def AI_moves(request):
                 # find the corresponding move by the index
                 # and assign it to the choice that AI will assume a human would make
                 player.AI_chosen_move = moves[worst_choice_index]
+                # create a version of the currently considered
+                # board showing the scores for each untaken tile
+                considered_board = game.board[:]
+                for idx, move in enumerate(moves):
+                    considered_board[move] = scores[idx]
                 # return the lowest score
-                return scores[worst_choice_index]
+                return scores[worst_choice_index], considered_board
 
             # if the active player is the computer
             # choose the highest scoring move and return its score
@@ -118,8 +129,12 @@ def AI_moves(request):
                 # find the highest-scoring move and assign it
                 # to the AI player's AI_chosen_move attribute
                 player.AI_chosen_move = moves[best_choice_index]
-                # return the highest score
-                return scores[best_choice_index]
+                # board showing the scores for each untaken tile
+                considered_board = game.board[:]
+                for idx, move in enumerate(moves):
+                    considered_board[move] = scores[idx]
+                # return the lowest score
+                return scores[best_choice_index], considered_board
 
         # initialize global, constant variables:
         # for tile values
@@ -164,7 +179,11 @@ def AI_moves(request):
             def move(self, game):
                 """ use minimax function to return AI's next move (chosen tile) """
                 # run the minimax calculation passing the player object and the current game
-                minimax(self, game)
+                # we no longer use the returned move separately,
+                # we just change the self.AI_chosen_move within minimax
+                # and for the what-ai-thought feature we change the game's
+                # considered_board property
+                the_move, game.considered_board = minimax(self, game)
                 # return the global variable AI_chosen_move,
                 # whose value will be changed by the minimax() function
                 return self.AI_chosen_move
@@ -180,6 +199,10 @@ def AI_moves(request):
                 # here because in the minimax algorithm we create potential games
                 # with some moves already taken
                 self.depth = depth
+                # added a game property of "considered_board"
+                # which will hold a visualisation of the board
+                # from AI's perspective (filled with z's for debugging)
+                self.considered_board = ['z','z','z']
 
                 # since we only play the AI turn, the computer is always the active player
                 # which is always going to be player 1
@@ -316,6 +339,8 @@ def AI_moves(request):
         response_data['board[]'] = current_game.board
         # assign the game's current state of over/not over
         response_data['GAME_OVER'] = game_over
+        # add the considered board from AI's perspective
+        response_data['considered_board'] = current_game.considered_board
 
         return HttpResponse(
             json.dumps(response_data),

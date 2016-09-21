@@ -14,3 +14,121 @@ td {
     -webkit-border-radius: 16px;
     color: black;
 }
+
+#circle_button {
+    height: 90px;
+    width: 95px;
+    font-size: 1em;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+}
+
+#ai_thought_button { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    transition: color 1s ease;
+    transition: background 1s ease;
+   
+}
+
+#ai_thought_button:hover { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    background: #3d91b8; 
+    color: #ffffff; 
+}
+
+#ai_move_button { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    transition: color 1s ease;
+    transition: background 1s ease;
+   
+}
+
+#ai_move_button:hover { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    background: #3d91b8; 
+    color: #ffffff; 
+}
+
+#restart_button { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    transition: color 1s ease;
+    transition: background 1s ease;
+   
+}
+
+#restart_button:hover { 
+    height: 83px;
+    width: 83px;
+    font-size: 15px;
+    color: white;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: purple;
+    background: #3d91b8; 
+    color: #ffffff; 
+}
+
+* {
+    font-family: Segoe UI;
+    font-weight: lighter;
+}

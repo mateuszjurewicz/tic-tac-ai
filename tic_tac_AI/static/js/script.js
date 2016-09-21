@@ -11,6 +11,10 @@ $(document).ready(function() {
     GAME_OVER = false;
     GAME_ALREADY_STARTED = false;
 
+    // For tracking AI's perceived boards (what-AI-thought feature)
+    WHAT_AI_THOUGHT = [];
+    AI_THOUGHTS_VISIBLE = false;
+
     // For displaying player's current token on hovered-over tiles
     HOVERED_VALUE = "Z";
 
@@ -58,7 +62,7 @@ $(document).ready(function() {
     }
 
     // Click the AI starts button to sendData() to backend and switch tokens from default (in which human starts and is X)
-    $('#move_AI').click(function(event) {
+    $('#ai_move_button').click(function(event) {
         // check if a decision hasn't already been made
         if (MOVE_MADE == false && GAME_ALREADY_STARTED == false) {
             // mark the fact that AI started this game (that the game has already been started - otherwise AI could make "first" move after human made moves)
@@ -68,7 +72,7 @@ $(document).ready(function() {
             $("#ai_starts").fadeTo(250, 0.30, function() {
                     $(this).attr("src", "/static/ai_starts_inactive.png");
                 }).fadeTo(250, 1)
-                // reset tokens
+            // reset tokens
             HUMAN_TOKEN = "O";
             AI_TOKEN = "X";
             // send the game state to backend_ajax.py
@@ -167,7 +171,7 @@ $(document).ready(function() {
     };
 
     // Fill the board with tile values based on passed board state
-    $('#clearer').click(function(event) {
+    $('#restart_button').click(function(event) {
         if (MOVE_MADE == false) {
             fill_board([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']);
             // restart depth to 0
@@ -194,17 +198,27 @@ $(document).ready(function() {
                     'border-radius': '16px',
                     '-moz-border-radius': '6px',
                     'color': 'black',
-                    'font-weight': 'normal'
+                    'font-weight': 'normal',
+                    'font-family': 'Segoe UI',
+    				'font-weight': 'lighter'
                 });
             });
             // loop over each tile and switch it's 'clicked' attribute back to false/no
             $('.tile').each(function(index, element) {
                 $(element).attr('clicked', 'no')
             });
-        }
-        // reset tokens, in case AI started previous game (we want X to always be the starting token)
-        AI_TOKEN = "O";
-        HUMAN_TOKEN = "X";
+            // reset tokens, in case AI started previous game (we want X to always be the starting token)
+	        AI_TOKEN = "O";
+	        HUMAN_TOKEN = "X";
+            // in case user chose to view the what-ai-thought feature
+            // clear the div holding the ai-perceived boards
+            $('#perceptions').empty();
+            // and reset the 2d array holding the perceived boards
+            WHAT_AI_THOUGHT = [];
+            // and mark that the ai thoughts are not visible
+            // to avoid displaying them twice
+            AI_THOUGHTS_VISIBLE = false;
+    	};
     });
 
     // Basic ajax function (test version)
@@ -225,7 +239,7 @@ $(document).ready(function() {
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 }
-                // buffering animation while AI is thinking (could make the animation only appear during first move)
+                // buffering animation while AI is thinking
                 $('#4').html("<img src='/static/buffering.gif' />");
             },
             success: function(response) {
@@ -239,12 +253,17 @@ $(document).ready(function() {
                 fill_board(new_board);
                 // increment the depth (since a turn has passed)
                 DEPTH_NOW += 10;
-                // and mark the game's over/not over status based on recent change
-                GAME_OVER = response['GAME_OVER'];
                 // mark that the human hasn't made a new decision (since the last one was already processed)
                 MOVE_MADE = false;
                 // if the game is won, highlight the winning tiles via formatting
                 showVictory(new_board);
+                // if the game isn't over (by victory or tie - hence depth condition)
+                // add the AI's perceived board to the 2-dimensional array of perceived boards
+                if (GAME_OVER == false && DEPTH_NOW < 100) {
+                	WHAT_AI_THOUGHT.push(response['considered_board']);
+                }
+                // and mark the game's over/not over status based on recent change
+                GAME_OVER = response['GAME_OVER'];
             }
         });
     };
@@ -278,13 +297,67 @@ $(document).ready(function() {
         };
     };
 
-    // Swap button images (used fadeTo() instead of fadeIn() and fadeOut() because that 
-    // created a milisecond gap that made the img disappear and the other buttons shift to the right
-    $("#ai_thoughts").click(function() {
-        $("#ai_thoughts").fadeTo(250, 0.30, function() {
-            $(this).attr("src", "/static/ai_thoughts_active.png");
-        }).fadeTo(250, 1)
+    $('#ai_thought_button').click(function(event) {
+    	if (GAME_OVER == true && AI_THOUGHTS_VISIBLE == false) {
+    		AI_THOUGHTS_VISIBLE = true;
+    		var container = $('#perceptions');
+    		var nr_of_turns = WHAT_AI_THOUGHT.length;
+    		for(var i = 0; i < nr_of_turns; i++) {
+		        container.append('<div class="row">'
+		        	+'<div class="col-sm-10 col-sm-offset-1 hid">'
+		        		+'<div class="row">'
+		        			+'<div class="col-sm-6 col-sm-offset-3 text-center">'
+		        				+'<h4 align="center" style="font-weight: lighter;">'
+		        					+'<span style="color: gray;">ai</span> turn #'+(i+1)+'<span style="font-weight: normal;"> ('+AI_TOKEN+')'+'</span>'
+		        				+'</h4>'
+		        				+'<table style="margin: auto;">'
+			        				+'<tr>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][0]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][1]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][2]+'</td>'
+			        				+'</tr>'
+			        				+'<tr>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][3]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][4]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][5]+'</td>'
+			        				+'</tr>'
+			        				+'<tr>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][6]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][7]+'</td>'
+			        					+'<td class="ai_thought">'+WHAT_AI_THOUGHT[i][8]+'</td>'
+			        				+'</tr>'
+			        			+'</table>'
+			        		+'</div>'
+			        	+'</div>'
+			        +'</div></div>');
+		    }
+		    // loop over all ai-perceived tiles and mark them based on value
+		    // to make good and bad options immediately visible
+		    $('.ai_thought').each(function(index, element) {
+		    	// first we'll need to convert the content of the tile to a number
+		    	// so we check if the tile in question doesn't contain a token
+		    	if ($(element).text() != "O" && $(element).text() != "X") {
+		    		// then we convert the strings to numbers
+		    		if (Number($(element).text()) < 0) {
+		    			// and switch the negative ones' color to red
+						$(element).css({
+		                    'color': 'red',
+		                });
+		    		}
+		    		// the positive numbers get a good color
+		    		if (Number($(element).text()) > 0) {
+						$(element).css({
+		                    'color': '#128ed8',
+		                    'font-weight': 'normal'
+		                });
+		    		}
+		    	}
+            });
+		    // scroll to the explanatory paragraph and the ai-perceived boards
+		    $('html, body').animate({
+		        scrollTop: $("#ai_thought_explanation").offset().top
+		    }, 1500);
+    	};
     });
-
 
 });

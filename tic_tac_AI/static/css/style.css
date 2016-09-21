@@ -40,26 +40,10 @@ td {
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    background: purple;
+    background: gray;
     transition: color 1s ease;
     transition: background 1s ease;
    
-}
-
-#ai_thought_button:hover { 
-    height: 83px;
-    width: 83px;
-    font-size: 15px;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: purple;
-    background: #3d91b8; 
-    color: #ffffff; 
 }
 
 #ai_move_button { 
@@ -79,22 +63,6 @@ td {
    
 }
 
-#ai_move_button:hover { 
-    height: 83px;
-    width: 83px;
-    font-size: 15px;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: purple;
-    background: #3d91b8; 
-    color: #ffffff; 
-}
-
 #restart_button { 
     height: 83px;
     width: 83px;
@@ -112,7 +80,8 @@ td {
    
 }
 
-#restart_button:hover { 
+#restart_button:hover {
+    cursor: pointer;
     height: 83px;
     width: 83px;
     font-size: 15px;
@@ -123,7 +92,6 @@ td {
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    background: purple;
     background: #3d91b8; 
     color: #ffffff; 
 }

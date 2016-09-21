@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <!-- Ensure RWD -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tic tac toe VS AI</title>
+        <title>Tic tac toe AI</title>
         <!-- Links to minified bootstrap CDN -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -20,14 +20,14 @@
 
         <div class="container">
 
-            <h2 align="center" style="font-weight: lighter;">tic tac <span style="color: gray;">ai</span></h2>
+            <h2 align="center" style="font-weight: lighter;">tic tac <span style="color: gray; font-weight: normal;">ai</span></h2>
 
             <p align="center" style="width: 298px; margin: auto; margin-bottom: 1em; text-align: center;">Face an <span style="font: bold; color: gray;">algorithmically intelligent</span> opponent by clicking your chosen tile or asking the (other) machine to go first</p>
 
             <div style="display: table; margin: auto; border-collapse: separate; border-spacing: 10px;">
-                <div id="ai_move_button">ai starts</div>
+                <div id="ai_move_button" active="yes">ai starts</div>
                 <div id="restart_button">restart</div>
-                <div id="ai_thought_button">what ai thought</div>
+                <div id="ai_thought_button" active="no">what ai thought</div>
             </div>
 
             <div class="row">

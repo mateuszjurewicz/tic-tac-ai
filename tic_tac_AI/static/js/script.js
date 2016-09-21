@@ -439,4 +439,38 @@ $(document).ready(function() {
 	    }
 	});
 
+	// handle hovering over active and inactive restart_button
+    $("#restart_button").on({
+	    mouseenter: function () {
+	    	// if the button is active (it always is) and a move isn't being processed
+	    	// switch button color to the active one (e.g. blue) and the cursor to pointer
+	    	// indicating that it can be clicked
+	        if ($(this).attr('active') == 'yes' && MOVE_MADE == false) {
+	        	$(this).css({
+	                'background-color': '#3d91b8',
+	                'cursor': 'pointer'
+	            });
+	        };
+	        // otherwise if a decision is being processed (e.g. ai's first move)
+	        // then don't change the color to the active one and cursor shouldn't
+	        // indicate that it's clickable - but the original yellow will show
+	        // that it's an option (after the buffering gif is done)
+	        if ($(this).attr('active') == 'yes' && MOVE_MADE == true) {
+	        	$(this).css({
+	                'cursor': 'auto'
+	            });
+	        };
+	    },
+	    // in other cases switch the color back to yellow (active, no focus)
+	    // when no decision is being processed
+	    mouseleave: function () {
+	        if ($(this).attr('active') == 'yes'&& MOVE_MADE == false) {
+	        	$(this).css({
+	                'background-color': '#FFCD4C',
+	                'cursor': 'pointer'
+	            });
+	        };
+	    }
+	});
+
 });

@@ -80,22 +80,6 @@ td {
    
 }
 
-#restart_button:hover {
-    cursor: pointer;
-    height: 83px;
-    width: 83px;
-    font-size: 15px;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: #3d91b8; 
-    color: #ffffff; 
-}
-
 * {
     font-family: Segoe UI;
     font-weight: lighter;

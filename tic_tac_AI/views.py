@@ -13,8 +13,6 @@ def play_game(request):
     """ a view-function initiating the main page """
     return render(request, 'tic_tac_AI/play_game.html', {})
 
-# I've added a csrf-token adding code to script.js, works in localhost
-# on PythonAnywhere I need to add the decorator @csrf_exempt to this function
 def AI_moves(request):
     """ a view-function grabbing and sending ajax/json board states"""
     if request.method == 'POST':
@@ -35,9 +33,9 @@ def AI_moves(request):
         ###############################################
         ###############################################
 
-        # tic_tac_1.3.py
+        # tic_tac_1.5.py (Django View version)
         # by Mjure
-        # 2016 07 27
+        # 2016 09 22
 
         # plays a perfect game of tic tac toe against a human opponent
         # inspired by http://neverstopbuilding.com/minimax (salutations to them!)

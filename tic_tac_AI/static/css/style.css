@@ -1,3 +1,16 @@
+/*
+* — Font for all text elements —
+*/
+
+p, td, h2, h3, div {
+    font-family: Segoe UI;
+    font-weight: lighter;
+}
+
+/*
+* — 3x3 Board style —
+*/
+
 table {
     border-collapse: separate;
 }
@@ -5,8 +18,8 @@ table {
 td {
     background-color: #eeeeee;
     border: solid white 4px;
-    width: 3em;
-    height: 3em;
+    width: 3.5em;
+    height: 3.5em;
     text-align: center;
     font-size: 200%;
     border-radius: 16px;
@@ -15,21 +28,11 @@ td {
     color: black;
 }
 
-#circle_button {
-    height: 90px;
-    width: 95px;
-    font-size: 1em;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: #FFCD4C;
-}
+/*
+* — Navigation Buttons —
+*/
 
-#ai_thought_button { 
+.button {
     height: 83px;
     width: 83px;
     font-size: 15px;
@@ -40,47 +43,14 @@ td {
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
+    transition: color 1s ease;
+    transition: background 1s ease;
+}
+
+#ai_thought_button {
     background: #b4b4b4;
-    transition: color 1s ease;
-    transition: background 1s ease;
-   
 }
 
-#ai_move_button { 
-    height: 83px;
-    width: 83px;
-    font-size: 15px;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
+#ai_move_button, #restart_button {
     background: #FFCD4C;
-    transition: color 1s ease;
-    transition: background 1s ease;
-   
-}
-
-#restart_button { 
-    height: 83px;
-    width: 83px;
-    font-size: 15px;
-    color: white;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: #FFCD4C;
-    transition: color 1s ease;
-    transition: background 1s ease;
-   
-}
-
-* {
-    font-family: Segoe UI;
-    font-weight: lighter;
 }

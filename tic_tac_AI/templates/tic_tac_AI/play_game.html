@@ -1,67 +1,68 @@
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <!-- Ensure RWD -->
+        <!-- Enable RWD based on device width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tic tac toe AI</title>
+        <title>Tic Tac AI</title>
         <!-- Links to minified bootstrap CDN -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <!-- Link to customized css -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <!-- Link to jQuery library-->
+        <!-- Link to minified jQuery library-->
         <script type="text/javascript" src="{% static 'js/jquery-3.1.0.min.js' %}"> </script>
         <!-- Link to customized jS script-->
         <script type="text/javascript" src="{% static 'js/script.js' %}"> </script>
 
     </head>
     <body>
-
+        <!-- For the most part ended up not using bootstrap except for board bits here and there -->
         <div class="container">
 
+            <!-- Titular header -->
             <h2 align="center" style="font-weight: lighter;">tic tac <span style="color: gray; font-weight: normal;">ai</span></h2>
 
+            <!-- Introductory instructions -->
             <p align="center" style="width: 298px; margin: auto; margin-bottom: 1em; text-align: center;">Face an <span style="font: bold; color: gray;">algorithmically intelligent</span> opponent by clicking your chosen tile or asking the (other) machine to go first</p>
 
+            <!-- 3 main interaction buttons -->
             <div style="display: table; margin: auto; border-collapse: separate; border-spacing: 10px;">
-                <div id="ai_move_button" active="yes">ai starts</div>
-                <div id="restart_button" active="yes">restart</div>
-                <div id="ai_thought_button" active="no">what ai thought</div>
+                <div class="button" id="ai_move_button" active="yes">ai starts</div>
+                <div class="button" id="restart_button" active="yes">restart</div>
+                <div class="button" id="ai_thought_button" active="no">what ai thought</div>
             </div>
 
+            <!-- The 3x3 tic tac board -->
             <div class="row">
-                <div class="col-sm-10 col-sm-offset-1 hid">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 text-center">
-                             <table style="margin: auto;">
-                                <tr>
-                                    <td class="tile" id="0"> </td>
-                                    <td class="tile" id="1"> </td>
-                                    <td class="tile" id="2"> </td>
-                                </tr>
-                                <tr>
-                                    <td class="tile" id="3"> </td>
-                                    <td class="tile" id="4"> </td>
-                                    <td class="tile" id="5"> </td>
-                                </tr>
-                                <tr>
-                                    <td class="tile" id="6"> </td>
-                                    <td class="tile" id="7"> </td>
-                                    <td class="tile" id="8"> </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                     <table style="margin: auto;">
+                        <tr>
+                            <td class="tile" id="0"> </td>
+                            <td class="tile" id="1"> </td>
+                            <td class="tile" id="2"> </td>
+                        </tr>
+                        <tr>
+                            <td class="tile" id="3"> </td>
+                            <td class="tile" id="4"> </td>
+                            <td class="tile" id="5"> </td>
+                        </tr>
+                        <tr>
+                            <td class="tile" id="6"> </td>
+                            <td class="tile" id="7"> </td>
+                            <td class="tile" id="8"> </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <div style="display: table; margin: auto; margin-top: 0em">
-                <div style="display: inline-block; width: 280px; margin-top: 0em;">
-                    <p id="ai_thought_explanation"align="center" style="text-align: left; margin-top: 1em; text-align: center;">The <span style="font: bold; color: gray;">what AI thought</span> feature lets you see the board through the machine's eyes. Higher score equals greater chance of a quicker victory.</p>
-                </div>
-            </div>
+            <!-- Instructions for the what-ai-thought feature -->
+            <p id="ai_thought_explanation" align="center" style="width: 280px; margin: auto; margin-top: 1em; text-align: center;">The <span style="font: bold; color: gray;">what AI thought</span> feature lets you see the board through the machine's eyes. Higher score equals greater chance of a quicker victory.</p>
+
+            <!-- Div for displaying the boards that the AI considered during each game -->
             <div id="perceptions"></div>
+
         </div>
     </body>
 </html>

@@ -5,8 +5,8 @@ Django web app via which you can play tic tac toe vs an artificial intelligence 
 <h3>Description</h3>
 Play around with a perfect opponent in a game of online tic tac toe. The simple (weak) AI uses a strategy called the minimax algorithm<sup>1</sup>,
 it uses recursion to look through the entire tree of possible game states and chooses its best move assuming that it's playing against
-a perfect opponent. Key improvement included taking into consideration the number of turns left (it prefers to win quick and lose late).
-Additional feature allows you to see visualisations of the board at each AI turn, showing what the machine was thinking.
+a perfect opponent. Key improvement included taking into consideration the number of turns left (it prefers to win quick and lose late).<br>
+* Additional feature allows you to see visualisations of the board at each AI turn, showing what the machine was thinking.
 
 <h3>Acknowledgments</h3>
 Inspired by Michael Dawson's "Python Programming for the Absolute Beginner"<sup>2</sup> , Brett Slatkin's "Effective Python: 59 Specific Ways to

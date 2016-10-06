@@ -214,6 +214,7 @@ def AI_moves(request):
             # define a method to check if a given player has won the game
             def has_won(self, player):
                 """ Find out if the player passed as argument is the winner, return Boolean value"""
+                # optimized version of this key runtime swallowing function (after cProfile with pstats analysis)
                 checked_token = player.token
                 for sequence in WAYS_TO_WIN:
                     if checked_token == self.board[sequence[0]] == self.board[sequence[1]] == \

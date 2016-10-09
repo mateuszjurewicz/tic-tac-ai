@@ -1,5 +1,6 @@
 # tic-tac-ai
 Django web app via which you can play tic tac toe vs an artificial intelligence and see what it was thinking.
+http://tictacai.pythonanywhere.com/
 
 2016 10 06
 <h3>Description</h3>

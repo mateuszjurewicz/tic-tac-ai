@@ -26,7 +26,7 @@ that could stem from my tic-tac-ai and below is a list of such possibilities:
 
 * improve the runtime (analysis with cProfile showed that the has_won() function eats up a lot of time)<br>
 * create a game of tic tac toe with a bigger board than 3x3 and define more ways to win<br>
-* randomize the tiles chosen by AI if all are given the same value by the algorithm (increases playability)
+* randomize the tiles chosen by AI if all are given the same value by the algorithm (increases re-playability)
 
 <sup>1</sup> More on the minimax algorithm at https://www.encyclopediaofmath.org/index.php/Minimax_principle<br>
 <sup>2</sup> Available at http://www.goodreads.com/book/show/80443.Python_Programming_for_the_Absolute_Beginner<br>

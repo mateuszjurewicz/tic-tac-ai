@@ -3,7 +3,7 @@ Django web app via which you can play tic tac toe vs an artificial intelligence 
 http://tictacai.pythonanywhere.com/
 
 You can read a step-by-step walkthrough of this project on my website:
-https://mateuszjurewicz.wordpress.com/
+<br/>https://mateuszjurewicz.wordpress.com/
 
 2016 10 06
 <h3>Description</h3>

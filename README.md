@@ -2,6 +2,9 @@
 Django web app via which you can play tic tac toe vs an artificial intelligence and see what it was thinking.
 http://tictacai.pythonanywhere.com/
 
+You can read a step-by-step walkthrough of this project on my website:
+https://mateuszjurewicz.wordpress.com/
+
 2016 10 06
 <h3>Description</h3>
 Play around with a perfect opponent in a game of online tic tac toe. The simple (weak) AI uses a strategy called the minimax algorithm<sup>1</sup>,
